@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>mechat.io chat server</title>
+<meta name="description" content="mechat.io is a web socket chat server with client-side end-to-end encryption.">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link href="/css/app.css" rel="stylesheet">
+<script src="/js/thirdparty.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/main.js" async defer></script>
+</head>
+<body>
+<div id="header">
+    <div id="headerLeft">
+        <span>name: </span><input type="text" id="nameInput" size=20> <span id="myName"></span>
+    </div>
+    <div id="headerRight">
+        <span id="connIndicator" class="red">&#9632;</span><span id="chatServer"></span>
+    </div>
+</div>
+<div id="chatBox">
+    <table>
+    <tr>
+    <th class="chatLeft"><div id="tabs"></div></th>
+    <th class="chatRight">users / #rooms</th>
+    </tr>
+    <tr>
+    <td class="chat chatLeft">
+        <div id="messages" class="scroller"></div>
+    </td>
+    <td class="chat chatRight">
+        <div class="scroller">
+            <span id="userList"></span>
+            <span id="roomList"></span>
+        </div>
+    </td>
+    </tr>
+    <tr><td><input type="text" id="chatInput"></td><td></td></tr>
+    </table>
+</div>
+<br />
+<div class="left">
+<pre id="commands">
+commands
+--------
+/msg   &lt;name/room&gt;       - send a direct message
+/join  &lt;room&gt; [password] - join/create a chat room
+/leave &lt;room&gt;            - leave a chat room
+/me    &lt;action&gt;          - do something
+</pre>
+</div>
+</body>

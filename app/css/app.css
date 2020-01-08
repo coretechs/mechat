@@ -1,0 +1,175 @@
+body {
+    background-color: #111111;
+    color: #CCCCCC;
+    font-family: monospace, "Courier New", Courier;
+}
+input {
+    color: white;
+    background-color: #333333;
+    border: 0px;
+    font-size: 1em;
+}
+pre {
+    font-size: 1.25em;
+}
+a {
+    color: #4682B4;
+}
+caption {
+    display: table-caption;
+    font-weight: bold;
+    color: whitesmoke;
+} 
+table {
+    width: 100%;
+}
+thead > tr > th {
+    border-bottom: 1px solid #666666;
+}
+th, td {
+    padding: 0px;
+    color: whitesmoke;
+}
+td.chat {
+    padding: 2px;
+    border-top: 1px solid #666666;
+    border-bottom: 1px solid #666666;
+}
+td.chatRight {
+    background-color: #333333;
+}
+div.left {
+    float: left;
+    width: 50%;
+}
+div.right {
+    float: right;
+}
+div.clear {
+    clear: both;
+}
+th, .chatLeft, .chatRight {
+    text-align: left;
+    vertical-align: top;
+}
+.chatLeft {
+    word-break: break-all;
+    word-wrap: break-word;
+    vertical-align: top;
+}
+.chatRight {
+    width: 25%;
+}
+#myName {
+    cursor: pointer;
+}
+#myName, #authCode {
+    color: whitesmoke;
+    font-weight: bold;
+}
+#headerLeft {
+    float: left;
+    text-align: left;
+    padding-left: 5px;
+}
+#headerRight {
+    float: right;
+    text-align: right;
+    padding-right: 5px;
+}
+#connIndicator {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#chatBox {
+    padding-top: 10px;
+    clear: both;
+}
+#chatInput {
+    padding: 4px;
+    margin-top: 2px;
+    width: 99%;
+}
+#gameStatus {
+    padding-bottom: 5px;
+}
+#tabs {
+    color: dimgray;
+}
+#tabs .tabName > .inactiveTab, .tabName > .activeTab{
+    font-style: italic;
+}
+#tabs .tabX {
+    font-size: small;
+    padding-right: .5em;
+    cursor: pointer;
+    color: #AC3939;
+}
+.myUser {
+    color: gray;
+}
+.hover {
+    font-weight: bold;
+    text-decoration: underline;
+    color: white;
+    cursor: pointer;
+}
+.activeTab, .inactiveTab {
+    padding-left: .5em;
+    padding-right: .5em;
+}
+.activeTab {
+    color: whitesmoke;
+    font-weight: bold;
+    cursor: default;
+}
+.scroller {
+    overflow-y: scroll;
+}
+.disconnected {
+    color: red;
+}
+.connected {
+    color: green;
+}
+.sender {
+    color: whitesmoke;
+}
+.receipt {
+    color: lightslategray;
+}
+.timestamp {
+    color: gray;
+    font-style: normal;
+}
+.server_msg { 
+    color: gray;
+}
+.send_private_msg {
+    color: olivedrab;
+}
+.recv_private_msg {
+    color: #88A3BF;
+}
+.send_room_msg {
+    color: #C09090;
+}
+.recv_room_msg {
+    color: #CCCCCC;
+}
+.status_msg {
+    color: royalblue;
+    font-style: italic;
+}
+.error_msg {
+    color: red;
+}
+.success_msg {
+    color: green;
+}
+.attention_msg {
+    color: gold;
+}
+.info_msg {
+    color: burlywood;
+}

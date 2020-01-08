@@ -1,0 +1,26 @@
+{
+  "name": "mechat.io",
+  "version": "0.0.1",
+  "main": "app/server.js",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "config": "^3.2.4",
+    "express": "^4.17.1",
+    "fs": "0.0.2",
+    "js-sha256": "^0.9.0",
+    "request": "^2.88.0",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@derpix.com:mechatio.git"
+  },
+  "author": "coretechs",
+  "license": "UNLICENSED",
+  "description": ""
+}
