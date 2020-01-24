@@ -210,13 +210,11 @@ function initSocket (data) {
 }
 
 function init () {
-    window.onresize = function () { onWindowResize(); };
     window.onclick = function () { APP.blink = false; };
     window.onkeydown = function () { APP.blink = false; };
     window.onmouseover = function () { APP.blink = false; };
 
     createServerTab();
-    onWindowResize();
 
     if(APP.name.length) DOM.chatInput.focus();
     else DOM.nameInput.focus();

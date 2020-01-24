@@ -6,7 +6,8 @@ body {
 input {
     color: white;
     background-color: #333333;
-    border: 0px;
+    border-width: 1px;
+    border-radius: 2px;
     font-size: 1em;
 }
 pre {
@@ -15,50 +16,12 @@ pre {
 a {
     color: #4682B4;
 }
-caption {
-    display: table-caption;
-    font-weight: bold;
-    color: whitesmoke;
-} 
-table {
-    width: 100%;
-}
-thead > tr > th {
-    border-bottom: 1px solid #666666;
-}
-th, td {
-    padding: 0px;
-    color: whitesmoke;
-}
-td.chat {
-    padding: 2px;
-    border-top: 1px solid #666666;
-    border-bottom: 1px solid #666666;
-}
-td.chatRight {
-    background-color: #333333;
-}
 div.left {
     float: left;
     width: 50%;
 }
 div.right {
     float: right;
-}
-div.clear {
-    clear: both;
-}
-th, .chatLeft, .chatRight {
-    text-align: left;
-    vertical-align: top;
-}
-.chatLeft {
-    word-break: break-all;
-    word-wrap: break-word;
-    vertical-align: top;
-}
-.chatRight {
-    width: 25%;
 }
 #myName {
     cursor: pointer;
@@ -81,20 +44,10 @@ th, .chatLeft, .chatRight {
     padding-left: 5px;
     padding-right: 5px;
 }
-#chatBox {
-    padding-top: 10px;
-    clear: both;
-}
-#chatInput {
-    padding: 4px;
-    margin-top: 2px;
-    width: 99%;
-}
-#gameStatus {
-    padding-bottom: 5px;
-}
 #tabs {
-    color: dimgray;
+    color: lightgray;
+    height: 1.4rem;
+    padding-top: 3px;
 }
 #tabs .tabName > .inactiveTab, .tabName > .activeTab{
     font-style: italic;
@@ -104,6 +57,45 @@ th, .chatLeft, .chatRight {
     padding-right: .5em;
     cursor: pointer;
     color: #AC3939;
+}
+#chatArea {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    width: 100%;
+}
+#chatText, #chatList {
+    text-align: left;
+    vertical-align: top;
+}
+#chatText {
+    word-break: break-all;
+    word-wrap: break-word;
+    width: 75%;
+    height: 60vh;
+    max-height: 60vh;
+}
+#URtitle {
+    height: 1.4rem;
+    padding-top: 3px;
+}
+#chatList {
+    width: 25%;
+    height: 60vh;
+    max-height: 60vh;
+}
+#chatInput {
+    padding: 4px;
+    margin-top: 4px;
+    width: 100%;
+    height: 1.4em;
+}
+.marginLeft {
+    margin-left: 4px;
+}
+.borders {
+    border-top: 1px solid #666666;
+    border-bottom: 1px solid #666666;
 }
 .myUser {
     color: gray;
@@ -125,6 +117,7 @@ th, .chatLeft, .chatRight {
 }
 .scroller {
     overflow-y: scroll;
+    height: calc(100% - 1.4em);
 }
 .disconnected {
     color: red;
@@ -172,4 +165,9 @@ th, .chatLeft, .chatRight {
 }
 .info_msg {
     color: burlywood;
+}
+@media only screen and (max-width: 800px) {
+    #chatList { height: 20vh; max-height: 20vh; width: 100%; order: 1; }
+    #chatText { width: 100%; order: 2; }
+    #chatInput { order: 3; }
 }

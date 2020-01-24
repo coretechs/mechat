@@ -23,7 +23,8 @@ function createServerTab () {
     
     t.appendChild(n);
 
-    DOM.tabs.insertBefore(t, DOM.tabs.nextSibling);
+    //DOM.tabs.insertBefore(t, DOM.tabs.nextSibling);
+    DOM.tabs.appendChild(t);
     selectTab(name);
 }
 
@@ -56,7 +57,8 @@ function createTab (name, type, select) {
     t.appendChild(n);
     t.appendChild(x);
 
-    DOM.tabs.insertBefore(t, DOM.tabs.nextSibling);
+    //DOM.tabs.insertBefore(t, DOM.tabs.nextSibling);
+    DOM.tabs.appendChild(t);
     if(select) selectTab(name);
 }
 
@@ -122,7 +124,7 @@ function updateUsers (users) {
         else user.className = "myUser";
         
         let listitem = document.createElement("div");
-        
+        listitem.classList.add("marginLeft");
         listitem.appendChild(user);
         DOM.userList.appendChild(listitem);
     }
@@ -151,7 +153,7 @@ function updateRooms (rooms) {
         };
         
         let listitem = document.createElement("div");
-        
+        listitem.classList.add("marginLeft");
         listitem.appendChild(r);
         DOM.roomList.appendChild(listitem);
     }
@@ -169,16 +171,6 @@ function toggleName (type) {
         DOM.nameInput.value = APP.name;
         DOM.nameInput.hidden = false;
         DOM.nameInput.focus();
-    }
-}
-
-function onWindowResize (pct) {
-    let h = parseInt(window.innerHeight),
-        s = document.getElementsByClassName("scroller");
-
-    pct = pct || 0.5;
-    for(let i = 0; i < s.length; i++) {
-        s[i].style.height = parseInt(h * pct) + "px";
     }
 }
 
