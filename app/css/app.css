@@ -165,7 +165,7 @@ a {
     color: burlywood;
 }
 @media only screen and (max-width: 640px) {
-    #chatList { height: 20vh; max-height: 20vh; width: 100%; order: 1; }
+    #chatList { height: 18vh; max-height: 18vh; width: 100%; order: 1; }
     #chatText { height: 50vh; max-height: 50vh;width: 100%; order: 2; }
     #chatInputArea { order: 3; }
 }
