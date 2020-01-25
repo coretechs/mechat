@@ -17,13 +17,13 @@ function createServerTab () {
 
     n.innerHTML = name;
     n.className = "activeTab";
+    n.id = "serverTab";
     n.onmouseover = addHover;
     n.onmouseout = removeHover;
     n.onclick = function () { selectTab(name); };
     
     t.appendChild(n);
 
-    //DOM.tabs.insertBefore(t, DOM.tabs.nextSibling);
     DOM.tabs.appendChild(t);
     selectTab(name);
 }
@@ -57,7 +57,6 @@ function createTab (name, type, select) {
     t.appendChild(n);
     t.appendChild(x);
 
-    //DOM.tabs.insertBefore(t, DOM.tabs.nextSibling);
     DOM.tabs.appendChild(t);
     if(select) selectTab(name);
 }

@@ -8,20 +8,40 @@ input {
     background-color: #333333;
     border-width: 1px;
     border-radius: 2px;
-    font-size: 1em;
-}
-pre {
-    font-size: 1.25em;
 }
 a {
     color: #4682B4;
 }
-div.left {
-    float: left;
-    width: 50%;
+#chatArea {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    width: 100%;
 }
-div.right {
-    float: right;
+#chatText, #chatList {
+    text-align: left;
+    vertical-align: top;
+    padding-bottom: .5rem;
+}
+#chatText {
+    word-break: break-all;
+    word-wrap: break-word;
+    width: 75%;
+    height: 70vh;
+    max-height: 70vh;
+}
+#chatList {    
+    width: 25%;
+    height: 70vh;
+    max-height: 70vh;
+}
+#chatInputArea {
+    width: 100%;
+}
+#chatInput {
+    padding: 4px;
+    margin-top: 4px;
+    width: calc(100% - 4.4rem);
 }
 #myName {
     cursor: pointer;
@@ -29,6 +49,9 @@ div.right {
 #myName, #authCode {
     color: whitesmoke;
     font-weight: bold;
+}
+#header {
+    padding-bottom: 1rem;
 }
 #headerLeft {
     float: left;
@@ -44,67 +67,30 @@ div.right {
     padding-left: 5px;
     padding-right: 5px;
 }
+#serverTab {
+    padding-left: 0px;
+}
 #tabs {
-    color: lightgray;
+    color: dimgray;
     height: 1.4rem;
-    padding-top: 3px;
+    border-bottom: 1px solid #666666;
 }
 #tabs .tabName > .inactiveTab, .tabName > .activeTab{
     font-style: italic;
 }
 #tabs .tabX {
-    font-size: small;
     padding-right: .5em;
     cursor: pointer;
     color: #AC3939;
 }
-#chatArea {
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 10px;
-    width: 100%;
-}
-#chatText, #chatList {
-    text-align: left;
-    vertical-align: top;
-}
-#chatText {
-    word-break: break-all;
-    word-wrap: break-word;
-    width: 75%;
-    height: 60vh;
-    max-height: 60vh;
-}
-#URtitle {
-    height: 1.4rem;
-    padding-top: 3px;
-}
-#chatList {
-    width: 25%;
-    height: 60vh;
-    max-height: 60vh;
-}
-#chatInput {
-    padding: 4px;
-    margin-top: 4px;
-    width: 100%;
-    height: 1.4em;
-}
-.marginLeft {
-    margin-left: 4px;
-}
-.borders {
-    border-top: 1px solid #666666;
-    border-bottom: 1px solid #666666;
-}
-.myUser {
-    color: gray;
-}
-.hover {
-    font-weight: bold;
-    text-decoration: underline;
+#URTitle {
     color: white;
-    cursor: pointer;
+    height: 1.4rem;
+    border-bottom: 1px solid #666666;
+    font-weight: bold;
+}
+#URListArea {
+    background-color: #333333;
 }
 .activeTab, .inactiveTab {
     padding-left: .5em;
@@ -117,7 +103,7 @@ div.right {
 }
 .scroller {
     overflow-y: scroll;
-    height: calc(100% - 1.4em);
+    height: calc(100% - 1.4rem);
 }
 .disconnected {
     color: red;
@@ -134,6 +120,18 @@ div.right {
 .timestamp {
     color: gray;
     font-style: normal;
+}
+.marginLeft {
+    margin-left: 4px;
+}
+.myUser {
+    color: gray;
+}
+.hover {
+    font-weight: bold;
+    text-decoration: underline;
+    color: white;
+    cursor: pointer;
 }
 .server_msg { 
     color: gray;
@@ -166,8 +164,8 @@ div.right {
 .info_msg {
     color: burlywood;
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 640px) {
     #chatList { height: 20vh; max-height: 20vh; width: 100%; order: 1; }
-    #chatText { width: 100%; order: 2; }
-    #chatInput { order: 3; }
+    #chatText { height: 50vh; max-height: 50vh;width: 100%; order: 2; }
+    #chatInputArea { order: 3; }
 }

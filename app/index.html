@@ -13,7 +13,7 @@
 <body>
 <div id="header">
     <div id="headerLeft">
-        <span>name: </span><input type="text" id="nameInput" size=20> <span id="myName"></span>
+        <span>name: </span><input id="nameInput" type="text" size=20> <span id="myName"></span>
     </div>
     <div id="headerRight">
         <span id="connIndicator" class="red">&#9632;</span><span id="chatServer"></span>
@@ -21,19 +21,21 @@
 </div>
 <div id="chatArea">
     <div id="chatText">
-        <div id="tabs" class="borders"></div>
+        <div id="tabs"></div>
         <div id="messages" class="scroller"></div>
     </div>
     <div id="chatList">
-        <div id="URtitle" class="borders">
+        <div id="URTitle">
             <span >users / #rooms</span>
         </div>
-        <div class="scroller">
+        <div id="URListArea" class="scroller">
             <span id="userList"></span>
             <span id="roomList"></span>
         </div>
     </div>
-    <input id="chatInput" type="text" />
+    <div id="chatInputArea">
+        <span>chat: </span><input id="chatInput" type="text">
+    </div>
 </div>
 <br />
 <div id="helpArea">
