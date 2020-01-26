@@ -137,8 +137,8 @@ function sendTo (message) {
 }
 
 function processMessage (message) {
-    message.sender = message.sender || location.hostname;
-    message.recipient = message.recipient || location.hostname;
+    message.sender = message.sender || "server";
+    message.recipient = message.recipient || "server";
     let tab = message.recipient.substring(0, 1) === "#" ? message.recipient : APP.name === message.sender ? message.recipient : message.sender;
 
     if(message.type === 1) {

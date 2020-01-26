@@ -12,8 +12,8 @@ const fs = require("fs"),
     socketio = require("socket.io"),
     app = express();
 
-const ENV = config.get("env"),
-    HOST = config.get("host"),
+const HOST = "server",
+    ENV = config.get("env"),
     PORT = config.get("port"),
     VERSION = JSON.parse(fs.readFileSync("package.json")).version,
     START_TS = Date.now(),

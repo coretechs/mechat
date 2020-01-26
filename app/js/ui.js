@@ -9,7 +9,7 @@ function removeHover (e) {
 function createServerTab () {
     let t = document.createElement("span"),
         n = document.createElement("span"),
-        name = location.hostname;
+        name = "server";
 
     t.id = name + "_tab";
     t.dataset.type = 0;
@@ -205,7 +205,7 @@ function createMessage (message) {
                 break;
     }
 
-    if(!message.sender) message.sender = location.hostname;
+    if(!message.sender) message.sender = "server";
     
     //show receipt
     if(message.messageid) {
