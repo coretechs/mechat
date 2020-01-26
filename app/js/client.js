@@ -242,8 +242,6 @@ const APP = {
 const DOM = {
     myName: document.getElementById("myName"),
     nameInput: document.getElementById("nameInput"),
-    helpLink: document.getElementById("helpLink"),
-    helpText: document.getElementById("helpText"),
     chatServer: document.getElementById("chatServer"),
     connIndicator: document.getElementById("connIndicator"),
     tabs: document.getElementById("tabs"),
@@ -282,14 +280,6 @@ DOM.nameInput.onkeyup = function (e) {
 
 DOM.nameInput.onblur = function () {
     toggleName("name");
-};
-
-DOM.helpLink.onclick = function () {
-    if(DOM.helpText.style.display == "block") {
-        DOM.helpText.style.display = "none";
-        return;
-    }
-    DOM.helpText.style.display = "block";
 };
 
 DOM.chatInput.onkeydown = function (e) {
