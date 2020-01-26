@@ -17,7 +17,20 @@
         <div><input id="nameInput" type="text"><span id="myName"></span></div>
     </div>
     <div id="headerRight">
+        <span id="helpLink">[?]</span>
         <span id="connIndicator" class="red">&#9632;</span><span id="chatServer"></span>
+    </div>
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+<pre id="commands">
+commands
+--------
+/msg   &lt;name/room&gt;       - send a direct message
+/join  &lt;room&gt; [password] - join/create a chat room
+/leave &lt;room&gt;            - leave a chat room
+/me    &lt;action&gt;          - do something
+</pre>
+        </div>
     </div>
 </div>
 <div id="chatArea">
@@ -38,15 +51,5 @@
         <label for="chatInput">chat:&nbsp;</label>
         <div><input id="chatInput" type="text"></div>
     </div>
-</div>
-<div id="helpArea">
-<pre id="commands">
-commands
---------
-/msg   &lt;name/room&gt;       - send a direct message
-/join  &lt;room&gt; [password] - join/create a chat room
-/leave &lt;room&gt;            - leave a chat room
-/me    &lt;action&gt;          - do something
-</pre>
 </div>
 </body>

@@ -2,6 +2,8 @@ body {
     background-color: #111111;
     color: #CCCCCC;
     font-family: monospace, "Courier New", Courier;
+    padding-left: .5rem;
+    padding-right: .5rem;
 }
 input {
     color: white;
@@ -12,31 +14,25 @@ input {
 label {
     float: left;
 }
-a {
-    color: #4682B4;
-}
 #chatArea {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 10px;
+    padding-top: 1rem;
     width: 100%;
 }
 #chatText, #chatList {
     text-align: left;
     vertical-align: top;
     padding-bottom: .5rem;
+    height: 50vh;
 }
 #chatText {
     word-break: break-all;
     word-wrap: break-word;
     width: 75%;
-    height: 70vh;
-    max-height: 70vh;
 }
 #chatList {    
     width: 25%;
-    height: 70vh;
-    max-height: 70vh;
 }
 #chatInputArea {
     width: 100%;
@@ -64,7 +60,6 @@ a {
 #headerLeft {
     float: left;
     text-align: left;
-    padding-left: 5px;
 }
 #headerLeft div {
     overflow: hidden;
@@ -72,7 +67,6 @@ a {
 #headerRight {
     float: right;
     text-align: right;
-    padding-right: 5px;
 }
 #connIndicator {
     padding-left: 5px;
@@ -125,7 +119,7 @@ a {
 .sender {
     color: whitesmoke;
 }
-.receipt {
+.receipt {    padding-right: 5px;
     color: lightslategray;
 }
 .timestamp {
@@ -176,8 +170,26 @@ a {
     color: burlywood;
 }
 @media only screen and (max-width: 640px) {
-    #chatList { height: 15vh; max-height: 15vh; width: 100%; order: 1; }
-    #chatText { height: 20vh; max-height: 20vh; width: 100%; order: 2; }
+    #chatList { height: 25vh; max-height: 25vh; width: 100%; order: 1; }
+    #chatText { height: 50vh; max-height: 50vh; width: 100%; order: 2; }
     #chatInputArea { order: 3; }
-    #helpArea { visibility: hidden; }
 }
+.modal {
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden;
+    padding-top: 1rem;
+}
+.modal-content {
+    background-color: #111111;
+    width: 100%;
+}
+#helpLink {
+    cursor: pointer;
+}
+#helpLink:hover,
+#helpLink:focus {
+    color: white;
+    font-weight: bold;
+} 
