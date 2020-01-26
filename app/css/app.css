@@ -173,8 +173,10 @@ label {
 }
 @media only screen and (max-width: 640px) {
     body { font-size: 0.6rem; }
+    input { font-size: 0.6rem; height: 0.6rem;}
     #chatArea { padding-top: 0.2rem; }
     #chatList { height: 13vh; max-height: 13vh; width: 100%; order: 1; }
     #chatText { height: 25vh; max-height: 25vh; width: 100%; order: 2; }
     #chatInputArea { order: 3; }
+    #chatInput { font-size: 0.7rem; height: 0.7rem; }
 }
