@@ -79,7 +79,7 @@ label {
 }
 #tabs {
     color: dimgray;
-    height: 1.4rem;
+    height: 1.4em;
     border-bottom: 1px solid #666666;
 }
 #tabs .tabName > .inactiveTab, .tabName > .activeTab{
@@ -92,7 +92,7 @@ label {
 }
 #URTitle {
     color: white;
-    height: 1.4rem;
+    height: 1.4em;
     border-bottom: 1px solid #666666;
     font-weight: bold;
 }
@@ -110,7 +110,7 @@ label {
 }
 .scroller {
     overflow-y: scroll;
-    height: calc(100% - 1.4rem);
+    height: calc(100% - 1.4em);
 }
 .disconnected {
     color: red;
