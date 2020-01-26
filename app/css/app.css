@@ -8,8 +8,9 @@ body {
 input {
     color: white;
     background-color: #333333;
-    border-width: 1px;
     border-radius: 2px;
+    border: none;
+    font-size: 1rem;
 }
 label {
     float: left;
@@ -24,7 +25,7 @@ label {
     text-align: left;
     vertical-align: top;
     padding-bottom: .5rem;
-    height: 50vh;
+    height: 70vh;
 }
 #chatText {
     word-break: break-all;
@@ -36,11 +37,11 @@ label {
 }
 #chatInputArea {
     width: 100%;
-}
-#chatInputArea div {
     overflow: hidden;
 }
 #chatInput {
+    height: 2rem;
+    padding: 0.5rem ;
     width: 100%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -68,6 +69,21 @@ label {
     float: right;
     text-align: right;
 }
+#helpText {
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding-top: 1rem;
+}
+#helpLink {
+    cursor: pointer;
+}
+#helpLink:hover,
+#helpLink:focus {
+    color: white;
+    font-weight: bold;
+} 
 #connIndicator {
     padding-left: 5px;
     padding-right: 5px;
@@ -171,26 +187,7 @@ label {
 }
 @media only screen and (max-width: 640px) {
     #chatArea { padding-top: 0.2rem; }
-    #chatList { height: 14vh; max-height: 14vh; width: 100%; order: 1; }
+    #chatList { height: 13vh; max-height: 13vh; width: 100%; order: 1; }
     #chatText { height: 25vh; max-height: 25vh; width: 100%; order: 2; }
     #chatInputArea { order: 3; }
 }
-.modal {
-    display: none;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    padding-top: 1rem;
-}
-.modal-content {
-    background-color: #111111;
-    width: 100%;
-}
-#helpLink {
-    cursor: pointer;
-}
-#helpLink:hover,
-#helpLink:focus {
-    color: white;
-    font-weight: bold;
-} 

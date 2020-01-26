@@ -243,7 +243,7 @@ const DOM = {
     myName: document.getElementById("myName"),
     nameInput: document.getElementById("nameInput"),
     helpLink: document.getElementById("helpLink"),
-    helpModal: document.getElementById("helpModal"),
+    helpText: document.getElementById("helpText"),
     chatServer: document.getElementById("chatServer"),
     connIndicator: document.getElementById("connIndicator"),
     tabs: document.getElementById("tabs"),
@@ -251,7 +251,6 @@ const DOM = {
     messages: document.getElementById("messages"),
     userList: document.getElementById("userList"),
     roomList: document.getElementById("roomList"),
-    commands: document.getElementById("commands")
 };
 
 APP.socket.on("connect", connect);
@@ -286,12 +285,12 @@ DOM.nameInput.onblur = function () {
 };
 
 DOM.helpLink.onclick = function () {
-    if(DOM.helpModal.style.display == "block") {
-        DOM.helpModal.style.display = "none";
+    if(DOM.helpText.style.display == "block") {
+        DOM.helpText.style.display = "none";
         return;
     }
-    DOM.helpModal.style.display = "block";
-}
+    DOM.helpText.style.display = "block";
+};
 
 DOM.chatInput.onkeydown = function (e) {
     if(e.keyCode !== 13) return;
