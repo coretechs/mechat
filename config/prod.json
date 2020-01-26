@@ -1,5 +1,4 @@
 {
 	"env": "prod",
-	"host": "mechat.io",
 	"port": 6543
 }

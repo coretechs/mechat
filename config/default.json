@@ -1,5 +1,4 @@
 {
 	"env": "dev",
-	"host": "localhost",
 	"port": 6543
 }
