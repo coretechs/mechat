@@ -50,7 +50,9 @@ function processCommand (message) {
         case "/join":
             room = parsed[1].substring(0, 1) !== "#" ? "#" + parsed[1] : parsed[1];
             pass = parsed[2] || "";
-            hash = APP.roomHashes[room] ? APP.roomHashes[room] : sha256.hex(pass);
+            hash = sha256.hex(pass);
+
+            APP.roomPasses[room] = pass;
 
             if(room.length > APP.maxRoomLength) {
                 processMessage({ type: 4, message: "error: room name can not be longer than " + APP.maxRoomLength - 1 + " characters" });
@@ -58,7 +60,6 @@ function processCommand (message) {
             }
             APP.socket.emit("join room", room, hash, function (result) {
                 if(result.success) {
-                    APP.roomHashes[room] = hash;
                     createTab(room, 2, true);
                 }
                 processMessage(result.message);
@@ -72,7 +73,7 @@ function processCommand (message) {
                 return;
             }
             if(getRoom(room)) {
-                delete APP.roomHashes[room];
+                delete APP.roomPasses[room];
                 delete APP.messages[room];
                 APP.socket.emit("leave room", room, function (result) {
                     processMessage(result.message);
@@ -96,13 +97,17 @@ function processCommand (message) {
                     };
                     sendTo(m);
                 }
-                else if(getRoom(recipient) && APP.roomHashes[recipient]) {
+                else if(getRoom(recipient)) {
                     createTab(recipient, 2, true);
+                    let messageId = getMessageId();
+                    let roomPass = APP.roomPasses[recipient];
+                    let passHash = sha256.hex(roomPass);
                     let m = {
                         type: 2,
-                        message: message,
+                        message: encryptMessage(message, messageId, roomPass),
+                        id: messageId,
                         recipient: recipient,
-                        hash: APP.roomHashes[recipient]
+                        hash: passHash
                     };
                     sendTo(m);
                 }
@@ -117,7 +122,7 @@ function processCommand (message) {
                     type: 3,
                     message: action,
                     recipient: recipient,
-                    hash: APP.roomHashes[recipient] ? APP.roomHashes[recipient] : sha256.hex("")
+                    hash: APP.roomPasses[recipient] ? sha256.hex(APP.roomPasses[recipient]) : sha256.hex("")
                 };
                 sendTo(m);
             }
@@ -144,6 +149,16 @@ function processMessage (message) {
     if(message.type === 1) {
         try {
             message.message = decryptMessage(message.message, message.messageid, APP.secrets[tab]);
+        }
+        catch(ex) {
+            processMessage({ type: 4, message: ex });
+            throw new Error(ex);
+        }       
+    }
+
+    if(message.type === 2) {
+        try {
+            message.message = decryptMessage(message.message, message.id, APP.roomPasses[message.recipient]);
         }
         catch(ex) {
             processMessage({ type: 4, message: ex });
@@ -234,7 +249,7 @@ const APP = {
     blink: false,
     blinkTab: {},
     messages: {},
-    roomHashes: {},
+    roomPasses: {},
     keys: {},
     secrets: {}
 };
