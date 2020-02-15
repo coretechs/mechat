@@ -229,7 +229,7 @@ const APP = {
     rooms: [],
     maxNameLength: 20,
     maxRoomLength: 21,
-    maxMessageLength: 4096,
+    maxMessageLength: 16384,
     activeTab: "",
     blink: false,
     blinkTab: {},

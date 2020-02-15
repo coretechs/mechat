@@ -303,8 +303,8 @@ io.on("connection", socket => {
     socket.on("message", message => {
         if(!socketReady(socket)) return;
         if(!message.message) return;
-        if(message.message.length > 4096) {
-            socket.emit("message", createMessage({ type: 4, message: "*** exceeded max message length of 4096 ***" }));
+        if(message.message.length > 16384) {
+            socket.emit("message", createMessage({ type: 4, message: "*** exceeded max message length of 16384 ***" }));
             return;
         } 
 
