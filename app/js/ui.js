@@ -52,7 +52,7 @@ function createTab (name, type, select) {
 
     x.innerHTML = "&#x2715;";
     x.className = "tabX";
-    x.onclick = function () { closeTab(name); };
+    x.onclick = function () { closeTab(name, true); };
 
     t.appendChild(n);
     t.appendChild(x);
@@ -78,11 +78,11 @@ function selectTab (name) {
     DOM.chatInput.focus();
 }
 
-function closeTab (name) {
+function closeTab (name, leave) {
     let t = document.getElementById(name + "_tab");
     if(t) {
         // leave room
-        if(parseInt(t.dataset.type, 10) === 2) {
+        if(leave && parseInt(t.dataset.type, 10) === 2) {
             processCommand("/leave " + name);
         }
         

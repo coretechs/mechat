@@ -76,6 +76,7 @@ function processCommand (message) {
                 delete APP.roomPasses[room];
                 delete APP.messages[room];
                 APP.socket.emit("leave room", room, function (result) {
+                    closeTab(room, false);
                     processMessage(result.message);
                 });
             }

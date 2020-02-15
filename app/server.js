@@ -267,6 +267,10 @@ io.on("connection", socket => {
                 next({ success: false, message: createMessage({ type: 4, message: "*** invalid password for [" + room + "] ***" }) });
                 return;
             }
+            if(getUsersInRoom(room).includes(socket.name)) {
+                next({ success: false, message: createMessage({ type: 4, message: "*** [" + socket.name + "] is already in [" + room + "] ***" }) });
+                return;
+            }
             socket.join(room);
             socket.emit("messages", messages[room]);
         } 
