@@ -295,6 +295,9 @@ io.on("connection", socket => {
                 serverMessageToRoom(room, "[" + socket.name + "] has left [" + room +"]");
                 serverMessageToRoom(room, users.length + " user(s) in room: [" + users.join(", ") + "]");
             }
+            else {
+                delete messages[room];
+            }
             return;
         }
         next({ success: false, message: createMessage({ type: 4, message: "*** user is not in room [" + room + "] ***" }) });
@@ -315,7 +318,7 @@ io.on("connection", socket => {
             let room = getRoom(message.recipient);
 
             if(room && message.hash === roomHashes[room]) {
-                if(message.hash === OPENROOMHASH) messages[room].push(message);
+                messages[room].push(message);
                 delete message.hash;
                 socket.nsp.to(room).emit("message", message);
             }
@@ -343,6 +346,7 @@ io.on("connection", socket => {
             delete socket.pubKey;
         }
         io.emit("users", getUsers());
+        io.emit("rooms", getRooms());
     });
 
     socket.on("error", error => {
