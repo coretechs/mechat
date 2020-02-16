@@ -271,37 +271,37 @@ io.on("connection", socket => {
                 next({ success: false, message: createMessage({ type: 4, message: "*** [" + socket.name + "] is already in [" + room + "] ***" }) });
                 return;
             }
-            socket.join(room);
-            socket.emit("messages", messages[room]);
         } 
         else {
-            messages[room] = messages[room] || [];
+            messages[room] = [];
             roomHashes[room] = hash;
-            socket.join(room);
+        }
+        socket.join(room, function () {
             socket.emit("messages", messages[room]);
             io.emit("rooms", getRooms());
-        }
-        next({ success: true, message: createMessage({ message: "joined room [" + room + "]" }) });
-        let users = getUsersInRoom(room);
-        serverMessageToRoom(room, "[" + socket.name + "] has joined [" + room +"]");
-        serverMessageToRoom(room, users.length + " user(s) in room: [" + users.join(", ") + "]");
+            next({ success: true, message: createMessage({ message: "joined room [" + room + "]" }) });
+            let users = getUsersInRoom(room);
+            serverMessageToRoom(room, "[" + socket.name + "] has joined [" + room +"]");
+            serverMessageToRoom(room, users.length + " user(s) in room: [" + users.join(", ") + "]");    
+        });
     });
     
     socket.on("leave room", (room, next) => {
         if(!socketReady(socket)) return;
         if(room.substring(0, 1) !== "#") room = "#" + room;
         if(socket.rooms[room]) {
-            socket.leave(room);
-            io.emit("rooms", getRooms());
-            next({ success: true, message: createMessage({ message: "left room [" + room + "]" }) });
-            if(getRoom(room)) {
-                let users = getUsersInRoom(room);
-                serverMessageToRoom(room, "[" + socket.name + "] has left [" + room +"]");
-                serverMessageToRoom(room, users.length + " user(s) in room: [" + users.join(", ") + "]");
-            }
-            else {
-                delete messages[room];
-            }
+            socket.leave(room, function () {
+                io.emit("rooms", getRooms());
+                next({ success: true, message: createMessage({ message: "left room [" + room + "]" }) });
+                if(getRoom(room)) {
+                    let users = getUsersInRoom(room);
+                    serverMessageToRoom(room, "[" + socket.name + "] has left [" + room +"]");
+                    serverMessageToRoom(room, users.length + " user(s) in room: [" + users.join(", ") + "]");
+                }
+                else {
+                    delete messages[room];
+                }
+            });
             return;
         }
         next({ success: false, message: createMessage({ type: 4, message: "*** user is not in room [" + room + "] ***" }) });
