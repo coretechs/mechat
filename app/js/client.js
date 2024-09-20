@@ -277,14 +277,15 @@ APP.socket.on("receipt", processReceipt);
 APP.socket.on("disconnect", disconnect);
 
 DOM.nameInput.onkeydown = function (e) {
-    if(e.keyCode === 13) {
-        if(APP.name === this.value) toggleName("name");
-        else setName(this.value);
-    }
     if(e.keyCode === 27) {
         toggleName("name");
+        return;
     }
+    if(e.keyCode !== 13) return;
     e.preventDefault();
+    
+    if(APP.name === this.value) toggleName("name");
+    else setName(this.value);
 };
 
 DOM.nameInput.onkeyup = function (e) {
