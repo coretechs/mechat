@@ -1,6 +1,6 @@
 {
   "name": "mechat.io",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "app/server.js",
   "dependencies": {
     "compression": "^1.7.4",
