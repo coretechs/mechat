@@ -8,13 +8,12 @@
 <link href="/css/app.css" rel="stylesheet">
 <script src="/js/thirdparty.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script src="/js/main.js" async defer></script>
+<script src="/js/main.js" defer></script>
 </head>
 <body>
 <div id="header">
     <div id="headerLeft">
-        <label for="nameInput">name:</label>
-        <div><input id="nameInput" type="text"><span id="myName"></span></div>
+        <label for="nameInput">name:</label><input id="nameInput" type="text"><span id="myName"></span>
     </div>
     <div id="headerRight">
         <a href="https://github.com/coretechs/mechat">GitHub</a>
@@ -35,7 +34,7 @@
             <span id="roomList"></span>
         </div>
     </div>
-    <div id="chatInputArea">
+    <div id="chatInputArea" hidden>
         <input id="chatInput" type="text">
     </div>
 </div>

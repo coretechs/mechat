@@ -34,7 +34,6 @@ function setName (name) {
                     APP.name = name;
                     setCookie("name", name, 1);
                     toggleName("name");
-                    DOM.chatInput.focus();
                 }
             });
         }
@@ -231,9 +230,8 @@ function init () {
     window.onmouseover = function () { APP.blink = false; };
 
     createServerTab();
-
-    if(APP.name.length) DOM.chatInput.focus();
-    else DOM.nameInput.focus();
+    
+    DOM.nameInput.focus();
 }
 
 const APP = {
@@ -261,6 +259,7 @@ const DOM = {
     chatServer: document.getElementById("chatServer"),
     connIndicator: document.getElementById("connIndicator"),
     tabs: document.getElementById("tabs"),
+    chatInputArea: document.getElementById("chatInputArea"),
     chatInput: document.getElementById("chatInput"),
     messages: document.getElementById("messages"),
     userList: document.getElementById("userList"),
@@ -276,25 +275,28 @@ APP.socket.on("messages", processMessages);
 APP.socket.on("receipt", processReceipt);
 APP.socket.on("disconnect", disconnect);
 
-DOM.nameInput.onkeydown = function (e) {
-    if(e.keyCode === 27) {
+DOM.nameInput.onkeydown = (e) => {
+    if(e.key === "Escape") {
         toggleName("name");
         return;
     }
-    if(e.keyCode !== 13) return;
-    e.preventDefault();
-    
-    if(APP.name === this.value) toggleName("name");
-    else setName(this.value);
-};
-
-DOM.nameInput.onkeyup = function (e) {
-    if(this.value.length > APP.maxNameLength) {
-        this.value = this.value.slice(0, APP.maxNameLength);
+    if(e.key !== "Enter") {
+        return;
     }
+    e.preventDefault();
+
+    if(APP.name === DOM.nameInput.value) toggleName("name");
+    else setName(DOM.nameInput.value);
 };
 
-DOM.nameInput.onblur = function () {
+DOM.nameInput.onkeyup = (e) => {
+    if(DOM.nameInput.value.length > APP.maxNameLength) {
+        DOM.nameInput.value = DOM.nameInput.value.slice(0, APP.maxNameLength);
+    }
+    e.preventDefault();
+};
+
+DOM.nameInput.onblur = () => {
     toggleName("name");
 };
 

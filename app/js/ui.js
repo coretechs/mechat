@@ -160,12 +160,15 @@ function updateRooms (rooms) {
 
 function toggleName (type) {
     if(type === "name" && APP.name.length) {
+        DOM.chatInputArea.hidden = false;
         DOM.nameInput.hidden = true;
         DOM.myName.innerHTML = "";
         DOM.myName.appendChild(document.createTextNode(APP.name));
         DOM.myName.hidden = false;
+        DOM.chatInput.focus();
     }
     else if(type === "input") {
+        DOM.chatInputArea.hidden = true;
         DOM.myName.hidden = true;
         DOM.nameInput.value = APP.name;
         DOM.nameInput.hidden = false;
