@@ -275,7 +275,7 @@ APP.socket.on("messages", processMessages);
 APP.socket.on("receipt", processReceipt);
 APP.socket.on("disconnect", disconnect);
 
-DOM.nameInput.onkeydown = (e) => {
+DOM.nameInput.onkeydown = function (e) {
     if(e.key === "Escape") {
         toggleName("name");
         return;
@@ -285,13 +285,13 @@ DOM.nameInput.onkeydown = (e) => {
     }
     e.preventDefault();
 
-    if(APP.name === DOM.nameInput.value) toggleName("name");
-    else setName(DOM.nameInput.value);
+    if(APP.name === this.value) toggleName("name");
+    else setName(this.value);
 };
 
-DOM.nameInput.onkeyup = (e) => {
-    if(DOM.nameInput.value.length > APP.maxNameLength) {
-        DOM.nameInput.value = DOM.nameInput.value.slice(0, APP.maxNameLength);
+DOM.nameInput.onkeyup = function (e) {
+    if(this.value.length > APP.maxNameLength) {
+        this.value = this.value.slice(0, APP.maxNameLength);
     }
     e.preventDefault();
 };
@@ -301,7 +301,9 @@ DOM.nameInput.onblur = () => {
 };
 
 DOM.chatInput.onkeydown = function (e) {
-    if(e.keyCode !== 13) return;
+    if(e.key !== "Enter") {
+        return;
+    }
     e.preventDefault();
     if(!APP.name.length) {
         processMessage({ type: 4, message: "*** you need to choose a name first ***" });
