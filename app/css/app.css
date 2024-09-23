@@ -44,6 +44,8 @@ label {
     height: 2rem;
     padding: 0.5rem ;
     width: 100%;
+    border-style: groove;
+    border-color: #CCCCCC;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
